@@ -161,7 +161,7 @@ const controller = {
         // If there is some text in the update input,
         // then change the name of the selected item
         // when the ENTER key is pressed.
-        if (updateItemInput.value && event.keyCode === ENTER_KEY) {
+        if (event.keyCode === ENTER_KEY && updateItemInput.value) {
             this.changeItemName(id, newName);
         }
 
@@ -192,7 +192,7 @@ const controller = {
         // Get the input value that the user has entered.
         const newName = updateItemInput.value;
 
-        if (typeof newName === 'string' && newName.length > 0) {
+        if (typeof newName === 'string' && newName) {
             this.changeItemName(id, newName);
         }
         else {
