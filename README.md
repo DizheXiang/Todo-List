@@ -9,4 +9,5 @@
 - press "**x**" to delete the event
 - press **enter** to save the current changes
 - press **esc** to cancel the current changes
+- click on the place out of focus would save the changed event/delete the empty event
 - click "Delete All" at the **bottom** to delete all the events
