@@ -332,17 +332,13 @@ const view = {
              toggleItemCheckbox.type = 'checkbox';
              toggleItemCheckbox.classList.add('toggle-item-checkbox');
              toggleItemCheckbox.addEventListener('change', controller.toggleItem);
-             if (item.done === true) {
-                toggleItemCheckbox.checked = true;
-             }
-             else {
-                toggleItemCheckbox.checked = false;
-             }
+             toggleItemCheckbox.checked = item.done;
 
              const updateItemInput = document.createElement('input');
              updateItemInput.classList.add('update-item-input', 'hide');
              updateItemInput.type = 'text';
              updateItemInput.value = item.name;
+             //bind this with controller
              updateItemInput.addEventListener('keyup', controller.updateItemNameOnKeyUp.bind(controller));
              updateItemInput.addEventListener('focusout', controller.updateItemNameOnFocusOut.bind(controller));
 
@@ -373,16 +369,7 @@ const view = {
 
          view.displayToggleAll();         
 
-         // Show a "+" button if the user is typing the new item's name.
-         // Hide the button if there is no input value.
-         const createItemButton = document.querySelector('#create-item-button');
-         const createInputElement = document.getElementById('create-item-input');
-         if (createInputElement.value) {
-             view.displayDOMElement(createItemButton);
-         }
-         else {
-             view.hideDOMElement(createItemButton);
-         }
+         view.displayCreateButton();
 
     },
     
@@ -398,6 +385,21 @@ const view = {
         else {
              view.hideDOMElement(toggleAllItemsButton);
         }
+    },
+    
+    /**
+    * Show a "+" button if the user is typing the new item's name.
+    * Hide the button if there is no input value.
+    */
+    displayCreateButton: function() {
+        const createItemButton = document.querySelector('#create-item-button');
+         const createInputElement = document.getElementById('create-item-input');
+         if (createInputElement.value) {
+             view.displayDOMElement(createItemButton);
+         }
+         else {
+             view.hideDOMElement(createItemButton);
+         }
     },
 
     /**
