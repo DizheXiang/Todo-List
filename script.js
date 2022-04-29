@@ -223,7 +223,7 @@ const controller = {
     * Delete all items.
     */
     deleteAllItems: function() {
-        const confirmDelete = confirm('This will delete all todo items!');
+        const confirmDelete = confirm('This will delete all todo events!');
         if (confirmDelete === true) {
             model.deleteAllItems();
             view.displayTodoItems();
