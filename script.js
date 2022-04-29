@@ -212,9 +212,11 @@ const controller = {
 
     /**
     * Delete the specified item.
-    * @param {Number} index - the index of the item (index starts from zero)
+    * @param {Event} event - the event paramter that is available to event handlers
     */
-    deleteItem: function(index) {
+    deleteItem: function(Event) {
+        const deleteItem = event.target;
+        const index = deleteItem.parentNode.getAttribute('id');
         model.deleteItem(index);
         view.displayTodoItems();
     },
@@ -350,7 +352,7 @@ const view = {
              const deleteItemButton = document.createElement('button');
              deleteItemButton.textContent = 'x';
              deleteItemButton.className = 'x-button';
-             deleteItemButton.addEventListener('click', (event) => (controller.deleteItem(index)));
+             deleteItemButton.addEventListener('click', controller.deleteItem);
 
 
              if (item.done === true) {
