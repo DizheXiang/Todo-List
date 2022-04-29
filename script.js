@@ -371,16 +371,7 @@ const view = {
              todoListUl.insertBefore(itemLi, todoListUl.childNodes[0]);
          });
 
-         // Display the button to toggle all items
-         // if there is at least one item.
-         // Hide the button if there are no items.
-         const toggleAllItemsButton = document.querySelector('#toggle-all-items-button');
-         if (model.countItems().numItems > 0) {
-             view.displayDOMElement(toggleAllItemsButton);
-         }
-         else {
-             view.hideDOMElement(toggleAllItemsButton);
-         }
+         view.displayToggleAll();         
 
          // Show a "+" button if the user is typing the new item's name.
          // Hide the button if there is no input value.
@@ -393,6 +384,20 @@ const view = {
              view.hideDOMElement(createItemButton);
          }
 
+    },
+    
+    /**
+    * Display a toggle-all-items button if there is at least one item,
+    * Hide the button if there are no items.
+    */
+    displayToggleAll: function() {
+        const toggleAllItemsButton = document.querySelector('#toggle-all-items-button');
+        if (model.countItems().numItems > 0) {
+            view.displayDOMElement(toggleAllItemsButton);
+        }
+        else {
+             view.hideDOMElement(toggleAllItemsButton);
+        }
     },
 
     /**
