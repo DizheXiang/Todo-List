@@ -42,8 +42,8 @@ const model = {
             }
         });
         return {
-            numItems: numItems,
-            numDoneItems: numDoneItems,
+            numItems,
+            numDoneItems
         };
     },
 
@@ -57,7 +57,7 @@ const model = {
         if (typeof name === 'string' && name.length > 0) {
             this.items.push({
                 name: name,
-                done: false,
+                done: false
             });
         }
     },
